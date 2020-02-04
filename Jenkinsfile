@@ -39,9 +39,7 @@ pipeline {
             steps {
                 echo '=== Pushing Petclinic Docker Image ==='
                 script {
-                   // login to ECR - for now it seems that that the ECR Jenkins plugin is not performing the login as expected. I hope it will in the future.
-                    sh("eval \$(aws ecr get-login --no-include-email --us-east-1 | sed 's|https://||')")
-                    docker.withRegistry('https://645385727312.dkr.ecr.us-east-1.amazonaws.com/spinnaker-ecr') {
+                    docker.withRegistry('https://645385727312.dkr.ecr.us-east-1.amazonaws.com/spinnaker-ecr', 'ecrCredentials') {
                         app.push("$SHORT_COMMIT")
                         app.push("latest")
                     }
