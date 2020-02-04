@@ -39,7 +39,7 @@ pipeline {
             steps {
                 echo '=== Pushing Petclinic Docker Image ==='
                 script {
-                    docker.withRegistry('https://645385727312.dkr.ecr.us-east-1.amazonaws.com/spinnaker-ecr', 'ecrCredentials') {
+                    docker.withRegistry('https://645385727312.dkr.ecr.us-east-1.amazonaws.com/spinnaker-ecr') {
                         app.push("$SHORT_COMMIT")
                         app.push("latest")
                     }
