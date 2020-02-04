@@ -28,7 +28,7 @@ pipeline {
             steps {
                 echo '=== Building Petclinic Docker Image ==='
                 script {
-                    app = docker.build("spinnaker-ecr")
+                    app = docker.build("645385727312.dkr.ecr.us-east-1.amazonaws.com/spinnaker-ecr")
                 }
             }
         }
@@ -40,7 +40,7 @@ pipeline {
                 echo '=== Pushing Petclinic Docker Image ==='
                 script {
                     docker.withRegistry('https://645385727312.dkr.ecr.us-east-1.amazonaws.com/spinnaker-ecr') {
-                        app.push("$SHORT_COMMIT")
+                        app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
                     }
                 }
