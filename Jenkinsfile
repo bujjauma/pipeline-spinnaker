@@ -51,8 +51,8 @@ pipeline {
         stage('Remove local images') {
             steps {
                 echo '=== Delete the local docker images ==='
-                sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:latest || :")
-                sh("docker rmi -f ibuchh/petclinic-spinnaker-jenkins:$SHORT_COMMIT || :")
+                sh("docker rmi -f spinnaker-ecr 645385727312.dkr.ecr.us-east-1.amazonaws.com/spinnaker-ecr:93e05ad4 || :")
+                sh("docker rmi -f spinnaker-ecr 645385727312.dkr.ecr.us-east-1.amazonaws.com/spinnaker-ecr:93e05ad4:$SHORT_COMMIT || :")
             }
         }
     }
